@@ -3,17 +3,12 @@
 // convenience to get you started writing code faster.
 //
 
-const COLOR_CODE_LENGTH_LIMIT = 2;
-
-export const decodedValue = (colors) => {
-  let colorCode = [];
-
-  let i;
-  for (i = 0; i < COLOR_CODE_LENGTH_LIMIT; i++) {
-    colorCode.push(COLORS.indexOf(colors[i]));
-  }
-
-  return Number.parseInt(colorCode.join(''));
+const colorCode = (color) => {
+  return COLORS.indexOf(color);
 };
 
-export const COLORS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
+export const decodedValue = (colors) => {
+  return Number.parseInt(colors.splice(0, 2).map(color => colorCode(color)).join(''));
+};
+
+const COLORS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
